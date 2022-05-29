@@ -754,6 +754,7 @@ const ResultsCheck = {
                 core.debug(`Details view pre-truncated: ${details}`);
                 details = details.replace(/^  \* ✅.*\n?/gm, '')
             }
+            return details
         });
     },
     render(viewPath, runMetas) {
