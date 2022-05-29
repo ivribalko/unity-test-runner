@@ -711,13 +711,13 @@ const ResultsCheck = {
             const details = yield ResultsCheck.renderDetails(runs);
             core.debug(`Details view: ${details}`);
             const rawAnnotations = runSummary.extractAnnotations();
-          core.debug(`Raw annotations: ${JSON.stringify(rawAnnotations)}`);
+            core.debug(`Raw annotations: ${JSON.stringify(rawAnnotations)}`);
             const annotations = rawAnnotations.map(rawAnnotation => {
                 const annotation = rawAnnotation;
                 annotation.path = rawAnnotation.path.replace('/github/workspace/', '');
                 return annotation;
             });
-          core.debug(`Annotations: ${JSON.stringify(annotations)}`);
+            core.debug(`Annotations: ${JSON.stringify(annotations)}`);
             const output = {
                 title,
                 summary,
