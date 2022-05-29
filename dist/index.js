@@ -45,27 +45,27 @@ function run() {
             const { editorVersion, customImage, projectPath, customParameters, testMode, coverageOptions, artifactsPath, useHostNetwork, sshAgent, gitPrivateToken, githubToken, checkName, } = model_1.Input.getFromUser();
             const baseImage = new model_1.ImageTag({ editorVersion, customImage });
             const runnerTemporaryPath = process.env.RUNNER_TEMP;
-            try {
-                yield model_1.Docker.run(baseImage, {
-                    actionFolder,
-                    editorVersion,
-                    workspace,
-                    projectPath,
-                    customParameters,
-                    testMode,
-                    coverageOptions,
-                    artifactsPath,
-                    useHostNetwork,
-                    sshAgent,
-                    gitPrivateToken,
-                    githubToken,
-                    runnerTemporaryPath,
-                });
-            }
-            finally {
-                yield model_1.Output.setArtifactsPath(artifactsPath);
-                yield model_1.Output.setCoveragePath('CodeCoverage');
-            }
+            // try {
+            //     yield model_1.Docker.run(baseImage, {
+            //         actionFolder,
+            //         editorVersion,
+            //         workspace,
+            //         projectPath,
+            //         customParameters,
+            //         testMode,
+            //         coverageOptions,
+            //         artifactsPath,
+            //         useHostNetwork,
+            //         sshAgent,
+            //         gitPrivateToken,
+            //         githubToken,
+            //         runnerTemporaryPath,
+            //     });
+            // }
+            // finally {
+            //     yield model_1.Output.setArtifactsPath(artifactsPath);
+            //     yield model_1.Output.setCoveragePath('CodeCoverage');
+            // }
             if (githubToken) {
                 const failedTestCount = yield model_1.ResultsCheck.createCheck(artifactsPath, githubToken, checkName);
                 if (failedTestCount >= 1) {
