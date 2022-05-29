@@ -745,7 +745,7 @@ const ResultsCheck = {
         });
     },
     renderDetails(runMetas) {
-        yield __awaiter(this, void 0, void 0, function* () {
+        return __awaiter(this, void 0, void 0, function* () {
             let details = yield ResultsCheck.render(`${__dirname}/results-check-details.hbs`, runMetas);
             let maximum = 65535;
             core.debug(`Details view pre-truncated: ${details.length}`);
