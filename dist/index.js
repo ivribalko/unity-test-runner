@@ -666,7 +666,14 @@ const ResultsCheck = {
     },
     renderDetails(runMetas) {
         return __awaiter(this, void 0, void 0, function* () {
-            return ResultsCheck.render(`${__dirname}/results-check-details.hbs`, runMetas);
+            let details = yield ResultsCheck.render(`${__dirname}/results-check-details.hbs`, runMetas);
+            let maximum = 65535;
+            if (details.length > maximum) { // will fail: Invalid request. Only 65535 characters are allowed; 126751 were supplied.
+                core.info(`Details view is too large (${details.length}/${maximum} characters), removing green test cases...`);
+                core.debug(`Details view pre-truncated: ${details}`);
+                details = details.replace(/^  \* ✅.*\n?/gm, '')
+            }
+            return details;
         });
     },
     render(viewPath, runMetas) {
