@@ -745,7 +745,7 @@ const ResultsCheck = {
         });
     },
     renderDetails(runMetas) {
-        let details = __awaiter(this, void 0, void 0, function* () {
+        let details = yield __awaiter(this, void 0, void 0, function* () {
             return ResultsCheck.render(`${__dirname}/results-check-details.hbs`, runMetas);
         });
         let maximum = 65535;
